@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <Card className="shadow-lg hover:shadow-2xl transition-all rounded-2xl overflow-hidden bg-white border border-gray-200">
       <div className="relative w-full h-52 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <Image
+        <img
           src={product.image || defaultImage}
           alt={product.title}
           width={500}

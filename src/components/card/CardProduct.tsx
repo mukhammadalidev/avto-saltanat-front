@@ -12,8 +12,8 @@ interface CardProductProps {
   items:object;
 }
 
-export default function CarProductCard({ id, title, imageUrl,items }: CardProductProps) {
-  const validImageUrl = imageUrl && imageUrl.trim() !== "" ? imageUrl : "/placeholder.jpg";
+export default function CarProductCard({items }: CardProductProps) {
+  const validImageUrl = items.image && items.image.trim() !== "" ? items.image : "/placeholder.jpg";
   const router = useRouter();
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white p-4">

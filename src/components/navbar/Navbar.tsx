@@ -10,7 +10,7 @@ import {
   SelectContent,
   SelectValue,
 } from "@/components/ui/select";
-import { Menu, Search, Globe, X } from "lucide-react";
+import { Menu, Globe, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
@@ -31,16 +31,22 @@ export default function Navbar() {
         {/* ✅ Menu (faqat desktop uchun) */}
         <div className="hidden md:flex space-x-6">
           <Button variant="outline" asChild>
-            <Link href="/products/">{t("Mahsulotlar")}</Link>
+            <Link href="/products/" prefetch={true}>{t("Mahsulotlar")}</Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link href="/services">{t("Maxsus Takliflar")}</Link>
+            <Link href="/about-us" prefetch={true}>{t("Biz haqimizda")}</Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link href="/contact">{t("Bog'lanish")}</Link>
+            <Link href="/service" prefetch={true}>{t("Service")}</Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link href="/catalog">{t("Katalog")}</Link>
+            <Link 
+              href="https://test.cdn.samauto.uz/docs/8bd60987-cba1-4a32-bfb6-e1191099b09c_SamAuto%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B32024(UZB)_compressed.pdf" 
+              download 
+              prefetch={true}
+            >
+              {t("Katalog")}
+            </Link>
           </Button>
         </div>
 
@@ -57,12 +63,6 @@ export default function Navbar() {
               <SelectItem value="ru">Russian</SelectItem>
             </SelectContent>
           </Select>
-
-          {/* ✅ Desktop uchun Search Input */}
-          <div className="relative hidden md:flex items-center">
-            <Search className="absolute left-2 text-gray-400" />
-            <Input className="pl-8 w-[180px]" placeholder={t("Qidirish...")} />
-          </div>
 
           {/* ✅ Mobil versiya uchun Sidebar tugmasi */}
           <button
@@ -88,25 +88,23 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* ✅ Mobil versiyada Search Input (Sidebar ichida) */}
-        <div className="p-4">
-          <div className="relative flex items-center">
-            <Search className="absolute left-2 text-gray-400" />
-            <Input className="pl-8 w-full" placeholder={t("Qidirish...")} />
-          </div>
-        </div>
-
         <nav className="flex flex-col p-4 space-y-4">
-          <Link href="/detail-cars/" className="text-lg" onClick={() => setSidebarOpen(false)}>
+          <Link href="/detail-cars/" prefetch={true} className="text-lg" onClick={() => setSidebarOpen(false)}>
             {t("Mahsulotlar")}
           </Link>
-          <Link href="/services" className="text-lg" onClick={() => setSidebarOpen(false)}>
-            {t("Maxsus Takliflar")}
+          <Link href="/about-us" prefetch={true} className="text-lg" onClick={() => setSidebarOpen(false)}>
+            {t("Biz haqimizda")}
           </Link>
-          <Link href="/contact" className="text-lg" onClick={() => setSidebarOpen(false)}>
-            {t("Bog'lanish")}
+          <Link href="/service" prefetch={true} className="text-lg" onClick={() => setSidebarOpen(false)}>
+            {t("Service")}
           </Link>
-          <Link href="/catalog" className="text-lg" onClick={() => setSidebarOpen(false)}>
+          <Link 
+            href="https://test.cdn.samauto.uz/docs/8bd60987-cba1-4a32-bfb6-e1191099b09c_SamAuto%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B32024(UZB)_compressed.pdf" 
+            className="text-lg" 
+            onClick={() => setSidebarOpen(false)} 
+            download 
+            prefetch={true}
+          >
             {t("Katalog")}
           </Link>
         </nav>

@@ -17,7 +17,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ item}) => {
         <h2 className="text-lg font-semibold text-gray-900">{item.title}</h2>
         <p className="text-sm text-gray-500">{item.descriptions}</p>
         <p className="text-gray-700 mt-2 line-clamp-3">{'xaxasxs'}</p>
-        <Link href={''} className="mt-4 inline-block text-blue-600 hover:underline font-medium">
+        <Link href={`/news/${item.id}`} className="mt-4 inline-block text-blue-600 hover:underline font-medium">
           Ko‘proq o‘qish →
         </Link>
       </div>

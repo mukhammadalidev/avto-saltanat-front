@@ -5,9 +5,9 @@ import Navbar from "@/components/navbar/Navbar";
 import Home from "@/pages/home/Home";
 import { Theme } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import Footer from "@/components/footer/Footer";
-
+import "aos/dist/aos.css";
 export const Context = createContext('');
 
 const fetchProducts = async () => {
@@ -40,6 +40,8 @@ export default function Page() {
   if (productsLoading || categoriesLoading) return <p>Loading...</p>;
   if (productsError) return <p>Error: {productsError.message}</p>;
   if (categoriesError) return <p>Error: {categoriesError.message}</p>;
+
+
 
   return (
     <Context.Provider value={{categories}}>

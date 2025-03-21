@@ -51,7 +51,7 @@ export default function SimpleSlider() {
             width={1920}
             height={600}
             className="w-full h-[60vh] md:h-[80vh] object-cover"
-            src="/images/banner2.jpg"
+            src="/images/banner.jpg"
             alt="banner"
           />
           {/* ✅ Matn qismi */}
