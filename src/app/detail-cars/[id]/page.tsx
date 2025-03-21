@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 
 function ProductDetail({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const {id} = use(params)
 
   useEffect(() => {
     async function fetchProduct() {
       try {
-        const res = await fetch(`http://localhost:8000/pro/api/products/${params.id}/`);
+        const res = await fetch(`http://localhost:8000/pro/api/products/${id}/`);
         const data = await res.json();
         setProduct(data);
       } catch (error) {
@@ -22,7 +23,7 @@ function ProductDetail({ params }: { params: { id: string } }) {
     }
 
     fetchProduct();
-  }, [params.id]);
+  }, [id]);
 
   if (loading) return <p>Yuklanmoqda...</p>;
   if (!product) return <p>Mahsulot topilmadi.</p>;

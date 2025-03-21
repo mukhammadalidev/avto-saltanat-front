@@ -130,3 +130,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+#nprogress .bar {
+  background: hsl(350, 100%, 53%) !important; /* Ko‘k rang */
+  height: 4px !important;
+}

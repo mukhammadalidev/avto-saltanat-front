@@ -4,7 +4,7 @@ import ProductModal from "@/components/dashboard/ProductModal";
 import ProductsTable from "@/components/dashboard/ProductTable";
 import Sidebar from "@/components/sidebar/Sidebar";
 
-function page() {
+function Page() {
   return (
     <div>
        <div className="flex">
@@ -17,4 +17,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

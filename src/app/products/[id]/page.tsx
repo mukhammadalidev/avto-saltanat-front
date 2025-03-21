@@ -3,12 +3,16 @@
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import { useParams } from "next/navigation";
 
-function ProductDetail({ params }: { params: { id: string } }) {
+function ProductDetail() {
+  const params = useParams(); // useParams bilan `params`ni olish
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!params?.id) return; // `params.id` mavjudligini tekshirish
+
     async function fetchProduct() {
       try {
         const res = await fetch(`http://localhost:8000/pro/api/products/${params.id}/`);
@@ -36,6 +40,7 @@ function ProductDetail({ params }: { params: { id: string } }) {
           <div>
             <h1 className="text-4xl font-bold text-gray-900">{product.title}</h1>
             <p className="mt-4 text-gray-600 text-lg leading-relaxed">{product.description}</p>
+            <p className="mt-2 text-gray-800 text-xl font-semibold">Narxi: {product.price} UZS</p>
             <div className="mt-6 flex space-x-4">
               <a
                 href={product.file}
@@ -50,7 +55,7 @@ function ProductDetail({ params }: { params: { id: string } }) {
 
           {/* Rasm qismi */}
           <div className="relative w-full h-80 md:h-96 sm:order-2">
-            <img src={product.image} alt={product.title} />
+            <img src={product.image} alt={product.title} className="w-full h-full object-cover rounded-lg" />
           </div>
         </div>
       </section>
@@ -59,14 +64,13 @@ function ProductDetail({ params }: { params: { id: string } }) {
       <section className="container mx-auto px-6 py-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Texnik tasnifi</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {product.technical_specification && (
+          {product.technical_specification &&
             Object.entries(product.technical_specification).map(([key, value], index) => (
               <div key={index} className="p-4 border rounded-lg border-gray-300">
                 <p className="text-gray-900 text-lg">{value}</p>
                 <p className="text-gray-500 text-sm">{key.replace(/_/g, " ")}</p>
               </div>
-            ))
-          )}
+            ))}
         </div>
       </section>
 

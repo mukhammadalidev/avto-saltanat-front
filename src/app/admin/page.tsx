@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-function page() {
+function Page() {
   const [isLogin,setIsLogin] = useState(false)
 
   const loginFunc = (data:object)=>{
@@ -36,4 +36,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

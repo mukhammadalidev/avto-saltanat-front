@@ -15,7 +15,7 @@ const fetchDetailCars=  async()=>{
 }
 
 
-function page() {
+function Page() {
 
   const {data,error,isLoading} = useQuery({queryKey:["data"],queryFn:fetchDetailCars})
 
@@ -58,4 +58,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

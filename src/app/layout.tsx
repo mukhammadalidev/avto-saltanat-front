@@ -9,6 +9,9 @@ import { useState } from "react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Theme } from "@radix-ui/themes";
 import { Toaster } from "react-hot-toast";
+import { I18nextProvider } from "react-i18next";
+import i18n from "../i18n";
+import TopLoader from "@/components/TopLoader/TopLoader";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,6 +35,8 @@ export default function RootLayout({
 
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+         <TopLoader />
+        <I18nextProvider i18n={i18n}>
         <Theme>
         <Toaster position="top-center" />
         <QueryClientProvider client={queryClient}>{children}
@@ -39,6 +44,7 @@ export default function RootLayout({
 
         </QueryClientProvider>
         </Theme>
+        </I18nextProvider>
       </body>
     </html>
   );
